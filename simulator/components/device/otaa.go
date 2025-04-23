@@ -1,6 +1,7 @@
 package device
 
 import (
+	"fmt"
 	"math/rand"
 	"strconv"
 	"time"
