@@ -186,5 +186,7 @@ func (d *Device) ProcessJoinAccept(JoinAccPayload *lorawan.JoinAcceptPayload) (*
 	d.Info.RX[1].DataRate = JoinAccPayload.DLSettings.RX2DataRate
 	downlink.MType = lorawan.JoinAccept
 
+	d.Print(fmt.Sprintf("JoinAccept received: DevAddr=%X, JoinNonce=%X, NetID=%X, RXDelay=%d, RX1DROffset=%d, RX2DataRate=%d",d.Info.DevAddr, d.Info.JoinNonce, d.Info.NetID, JoinAccPayload.RXDelay, JoinAccPayload.DLSettings.RX1DROffset, JoinAccPayload.DLSettings.RX2DataRate,), nil, util.PrintBoth)
+
 	return &downlink, nil
 }
