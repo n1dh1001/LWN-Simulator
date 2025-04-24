@@ -40,7 +40,9 @@ func (g *Gateway) TurnON() {
 
 	//udp
 	if g.Info.TypeGateway { //real
-		g.Info.Connection, err = udp.ConnectTo("eu1.cloud.thethings.network:1700")
+		g.Info.Connection, err = udp.ConnectTo(g.Info.AddrIP + ":" + g.Info.Port)
+	} else { //virtual
+		g.Info.Connection, err = udp.ConnectTo(*g.Info.BridgeAddress)
 	}
 
 	if err != nil {
